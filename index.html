@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10151b">
+  <title>Tower of Hanoi | Logic Programming Project</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="page-header">
+    <p class="eyebrow">LOGIC PROGRAMMING PROJECT</p>
+    <h1>Tower of Hanoi</h1>
+    <p class="byline">by <strong>Jennely E. Parado</strong> · BSIT 3-A</p>
+  </header>
+
+  <main class="app-shell">
+    <section class="toolbar panel">
+      <div class="setting">
+        <label for="disk-count">Disks</label>
+        <select id="disk-count">
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5" selected>5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option>
+        </select>
+      </div>
+      <button id="new-game" class="brass-button">New Game</button>
+      <button id="solve" class="pink-button">Auto-Solve</button>
+      <div class="speed-control">
+        <label for="speed">Animation speed <output id="speed-value">1x</output></label>
+        <input id="speed" type="range" min="1" max="10" value="1">
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Game statistics">
+      <div class="stat-card"><span>TIME</span><strong id="timer">00:00</strong></div>
+      <div class="stat-card"><span>MOVES</span><strong id="move-count">0</strong></div>
+      <div class="stat-card"><span>INVALID MOVES</span><strong id="invalid-count">0</strong></div>
+      <div class="stat-card"><span>OPTIMAL</span><strong id="optimal-count">31</strong></div>
+    </section>
+
+    <section class="game-board panel">
+      <div class="board-heading">
+        <div><span class="live-dot"></span> GAME TABLE</div>
+        <p>Move every disk to the last peg. Larger disks cannot sit on smaller disks.</p>
+      </div>
+      <div class="board" id="board">
+        <div class="peg-column" data-peg="0"><div class="peg-label">PEG 1</div><div class="peg" aria-hidden="true"></div><div class="disks-area"><div class="disks-stack" id="stack-0"></div></div></div>
+        <div class="peg-column" data-peg="1"><div class="peg-label">PEG 2</div><div class="peg" aria-hidden="true"></div><div class="disks-area"><div class="disks-stack" id="stack-1"></div></div></div>
+        <div class="peg-column" data-peg="2"><div class="peg-label">PEG 3</div><div class="peg" aria-hidden="true"></div><div class="disks-area"><div class="disks-stack" id="stack-2"></div></div></div>
+        <div class="wooden-base"></div>
+        <div id="flight-layer" aria-hidden="true"></div>
+      </div>
+      <p class="instruction" id="instruction">Select a top disk, then select its destination peg.</p>
+    </section>
+    <p class="footer-note">POWERED BY SWI-PROLOG <span>✦</span> VANILLA JAVASCRIPT</p>
+  </main>
+
+  <div class="modal-backdrop hidden" id="victory-modal" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+    <div class="victory-card">
+      <div class="trophy">✦</div>
+      <p class="eyebrow">PUZZLE COMPLETE</p>
+      <h2 id="victory-title">Well played!</h2>
+      <p class="victory-subtitle">All disks are safely stacked on Peg 3.</p>
+      <div class="victory-stats">
+        <div><span>TIME</span><strong id="final-time">00:00</strong></div>
+        <div><span>MOVES</span><strong id="final-moves">0</strong></div>
+        <div><span>OPTIMAL</span><strong id="final-optimal">31</strong></div>
+      </div>
+      <button id="play-again" class="pink-button">Play Again</button>
+    </div>
+  </div>
+  <script src="/js/game.js" defer></script>
+</body>
+</html>
